@@ -226,7 +226,7 @@ int PerformOSCMessage(World *inWorld, int inSize, char *inData, ReplyAddress *in
 	// scprintf("->PerformOSCMessage %d\n", inData[0]);
 	SC_LibCmd *cmdObj;
 	int cmdNameLen;
-	if (inData[0] == 0) {
+  if ((int)inData[0] == 0) {
 		cmdNameLen = 4;
 		uint32 index = inData[3];
 		if (index >= NUMBER_OF_COMMANDS) cmdObj = 0;
