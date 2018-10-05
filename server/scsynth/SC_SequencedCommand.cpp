@@ -970,7 +970,7 @@ bool BufReadChannelCmd::Stage2()
 		} else {
 			// alloc temp buffer
 			float* data = (float*)malloc(mNumFrames*fileinfo.channels*sizeof(float));
-			if (data == 0) goto leave;
+			if (data == NULL) goto leave;
 			// read some channels
 			sf_seek(sf, mFileOffset, SEEK_SET);
 			sf_readf_float(sf, data, mNumFrames);
@@ -988,7 +988,7 @@ leave:
 		buf->sndfile = sf;
 	} else {
 		sf_close(sf);
-		buf->sndfile = 0;
+		buf->sndfile = NULL;
 	}
 
 	mSampleRate = (double)fileinfo.samplerate;
@@ -1105,7 +1105,7 @@ bool BufWriteCmd::Stage2()
 		buf->sndfile = sf;
 	} else {
 		sf_close(sf);
-		buf->sndfile = 0;
+		buf->sndfile = NULL;
 	}
 
 	return true;
@@ -1155,7 +1155,7 @@ bool BufCloseCmd::Stage2()
 	SndBuf *buf = World_GetNRTBuf(mWorld, mBufIndex);
 	if (buf->sndfile) {
 		sf_close(buf->sndfile);
-		buf->sndfile = 0;
+		buf->sndfile = NULL;
 	}
 	return true;
 #endif

@@ -229,7 +229,7 @@ int PerformOSCMessage(World *inWorld, int inSize, char *inData, ReplyAddress *in
   if ((int)inData[0] == 0) {
 		cmdNameLen = 4;
 		uint32 index = inData[3];
-		if (index >= NUMBER_OF_COMMANDS) cmdObj = 0;
+		if (index >= NUMBER_OF_COMMANDS) cmdObj = NULL;
 		else cmdObj = gCmdArray[index];
 	} else {
 		cmdNameLen = OSCstrlen(inData);
